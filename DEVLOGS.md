@@ -22,10 +22,16 @@ Using this to track daily development changes and improvements.
 - Updated button to teal
 - Added development plan in README
 
-## 2025-4-15 - 2pm
+## 2025-4-15 - 1pm
 
 - Created marketplace skeleton page
 - Added bottom navigation bar (HOME, EXPLORE, MESSAGES, PROFILE)
 - Implemented placeholder sections
 - Connected landing page to marketplace
 - Added basic routing structure
+
+## 2025-4-15 - 2pm
+
+- Added "Just In." logo redirect to landing page
+- Improved header layout in all pages
+- Added page names to headers

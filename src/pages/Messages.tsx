@@ -8,9 +8,10 @@ const Messages = () => {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-serif text-gray-900 font-semibold">
-            Messages
-          </h1>
+          <Link to="/" className="text-xl font-serif text-gray-900 font-semibold">
+            Just In.
+          </Link>
+          <h2 className="text-lg font-medium text-gray-700">Messages</h2>
         </div>
       </header>
 

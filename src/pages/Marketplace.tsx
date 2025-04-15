@@ -61,9 +61,9 @@ const Marketplace = () => {
       {/* Header with Logo and Location */}
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-serif text-gray-900 font-semibold">
+          <Link to="/" className="text-xl font-serif text-gray-900 font-semibold">
             Just In.
-          </h1>
+          </Link>
           <div className="flex items-center text-purple-600">
             <MapPin className="h-5 w-5 mr-1" />
             <span className="font-medium">NYU</span>
