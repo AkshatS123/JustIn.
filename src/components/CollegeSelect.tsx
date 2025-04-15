@@ -79,7 +79,7 @@ const CollegeSelect = ({ onSelected, initialCollege }: CollegeSelectProps) => {
       
       {/* Small prompt to encourage selection */}
       {!selectedCollege && (
-        <p className="text-white/70 text-sm mt-2 text-center sm:text-left animate-pulse">
+        <p className="text-white/70 text-sm mt-2 text-center sm:text-left">
           Select your college to see campus drone footage
         </p>
       )}

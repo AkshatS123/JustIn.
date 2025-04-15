@@ -138,10 +138,8 @@ const Index = () => {
       return;
     }
     
-    toast({
-      title: "Welcome to Just In",
-      description: `You've selected ${selectedCollege}`,
-    });
+    // Navigate to the next page or perform next action without showing toast
+    console.log(`Continuing with selected college: ${selectedCollege}`);
     
     // In a real application, this would navigate to the next page
     // navigation.push('/dashboard');
@@ -183,23 +181,18 @@ const Index = () => {
         </video>
         <div className="video-overlay" /> {/* Darker overlay for better text contrast */}
         
-        {/* Video Loading Indicator (centered on screen) */}
+        {/* Video Loading Indicator (minimal and subtle) */}
         {isVideoLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex flex-col items-center">
-              <Loader2 className="loading-spinner" />
-              <p className="text-white/70 mt-4 text-xl">
-                {selectedCollege ? `Loading ${selectedCollege} campus footage...` : 'Loading campus footage...'}
-              </p>
-            </div>
+            <Loader2 className="loading-spinner" />
           </div>
         )}
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center space-y-8 px-4 pt-8">
+      <div className="relative z-10 flex flex-col items-center justify-center space-y-8 px-4 pt-12">
         {/* Logo */}
-        <div className="mb-6 md:mb-10 mt-[-30px] md:mt-[-60px]">
+        <div className="mb-12 md:mb-16 mt-[-20px] md:mt-[-40px]">
           <Logo />
         </div>
         
@@ -209,12 +202,6 @@ const Index = () => {
           
           {/* College Selection */}
           <CollegeSelect onSelected={handleCollegeSelected} initialCollege={DEFAULT_COLLEGE} />
-          
-          {/* Selected College Display */}
-          {selectedCollege && (
-            <div className="animate-fade-in text-white text-lg sm:text-xl font-light mt-4 sm:mt-6 text-center">
-            </div>
-          )}
           
           {/* Continue Button */}
           <Button 
@@ -226,7 +213,6 @@ const Index = () => {
             {isVideoLoading ? (
               <span className="flex items-center justify-center">
                 <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                Loading...
               </span>
             ) : (
               'CONTINUE'

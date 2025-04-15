@@ -14,7 +14,7 @@ const Logo: React.FC<LogoProps> = ({ showImage = false, className = '' }) => {
             <img 
               src="/Just.png" 
               alt="Just In Logo"
-              className="h-20 w-20 md:h-28 md:w-28" 
+              className="h-40 w-40 md:h-56 md:w-56" 
             />
           </div>
         )}

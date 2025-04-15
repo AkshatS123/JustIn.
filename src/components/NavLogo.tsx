@@ -9,16 +9,16 @@ interface NavLogoProps {
 const NavLogo: React.FC<NavLogoProps> = ({ className = '', size = 'md' }) => {
   // Container sizes
   const containerClass = {
-    sm: 'h-10 w-10 overflow-visible',
-    md: 'h-12 w-12 overflow-visible', 
-    lg: 'h-14 w-14 overflow-visible'
+    sm: 'h-20 w-20 overflow-visible',
+    md: 'h-24 w-24 overflow-visible', 
+    lg: 'h-28 w-28 overflow-visible'
   };
   
   // Image sizes (much larger than containers)
   const imageClass = {
-    sm: 'h-20 w-20',
-    md: 'h-28 w-28', 
-    lg: 'h-36 w-36'
+    sm: 'h-40 w-40',
+    md: 'h-56 w-56', 
+    lg: 'h-72 w-72'
   };
 
   return (

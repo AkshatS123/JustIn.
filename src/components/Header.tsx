@@ -7,9 +7,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   return (
-    <header className={`py-2 px-3 fixed top-0 left-0 right-0 z-50 ${className}`}>
+    <header className={`py-4 px-5 fixed top-0 left-0 right-0 z-50 ${className}`}>
       <div className="container mx-auto flex items-center justify-between">
-        <NavLogo size="md" className="ml-0 md:ml-2" />
+        <NavLogo size="md" className="ml-0 md:ml-4" />
         
         {/* Additional navigation items can be added here */}
         <div className="flex items-center gap-4">
