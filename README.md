@@ -1,6 +1,6 @@
 # 🚀 Just In!
 
-Explore college campuses through beautiful drone footage.
+The next fashion marketplace bringing students together. 
 
 ## 🔧 Quick Setup
 
