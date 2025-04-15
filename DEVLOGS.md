@@ -21,3 +21,11 @@ Using this to track daily development changes and improvements.
 - Switched to white container
 - Updated button to teal
 - Added development plan in README
+
+## 2025-4-15 - 2pm
+
+- Created marketplace skeleton page
+- Added bottom navigation bar (HOME, EXPLORE, MESSAGES, PROFILE)
+- Implemented placeholder sections
+- Connected landing page to marketplace
+- Added basic routing structure

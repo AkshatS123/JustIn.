@@ -5,6 +5,7 @@ import CollegeSelect from '@/components/CollegeSelect';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 import Header from '@/components/Header';
+import { useNavigate } from 'react-router-dom';
 
 // College videos mapping
 const collegeVideos: Record<string, string> = {
@@ -25,6 +26,7 @@ const DEFAULT_COLLEGE = 'UCLA';
 
 const Index = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [selectedCollege, setSelectedCollege] = useState<string>(DEFAULT_COLLEGE);
   const [videoLoaded, setVideoLoaded] = useState<boolean>(false);
   const [videoSrc, setVideoSrc] = useState<string>(collegeVideos[DEFAULT_COLLEGE]);
@@ -138,11 +140,9 @@ const Index = () => {
       return;
     }
     
-    // Navigate to the next page or perform next action without showing toast
+    // Navigate to the marketplace page
     console.log(`Continuing with selected college: ${selectedCollege}`);
-    
-    // In a real application, this would navigate to the next page
-    // navigation.push('/dashboard');
+    navigate('/marketplace');
   };
 
   return (
@@ -197,7 +197,7 @@ const Index = () => {
         </div>
         
         {/* College Selection Section */}
-        <div className="w-full max-w-md bg-white/95 backdrop-blur-md p-5 sm:p-8 rounded-lg border border-neutral-200 shadow-md">
+        <div className="w-full max-w-md bg-white/80 backdrop-blur-md p-5 sm:p-8 rounded-lg border border-neutral-200/70 shadow-md">
           <h2 className="text-gray-900 text-xl sm:text-2xl font-medium mb-4 sm:mb-6 text-center">Find Your Campus</h2>
           
           {/* College Selection */}
