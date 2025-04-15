@@ -112,7 +112,7 @@
   }
 
   .video-container {
-    @apply object-cover w-full h-full;
+    @apply object-cover w-full h-full transition-opacity duration-300;
   }
 
   .video-overlay {
@@ -120,17 +120,17 @@
   }
 
   .video-fade-in {
-    animation: videoFadeIn 1.5s ease-out;
+    animation: videoFadeIn 0.3s ease-out forwards;
   }
 
   .loading-spinner {
-    @apply h-12 w-12 text-white/70 animate-spin;
+    @apply h-12 w-12 text-white/70 animate-spin transition-opacity duration-300;
   }
 }
 
 @keyframes videoFadeIn {
   from {
-    opacity: 0.3;
+    opacity: 0;
   }
   to {
     opacity: 1;

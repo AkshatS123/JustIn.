@@ -8,16 +8,16 @@ import Header from '@/components/Header';
 
 // College videos mapping
 const collegeVideos: Record<string, string> = {
-  'UCLA': '/videos/UCLA.mp4', // Using the local UCLA.mp4 file
-  'Columbia': '/videos/Columbia.mp4', // Corrected case for Columbia video
-  'NYU': '/videos/nyu-campus.mp4' // Placeholder for NYU video
+  'UCLA': '/videos/UCLA.mp4',
+  'Columbia': '/videos/Columbia.mp4',
+  'NYU': '/videos/NYU.mp4' // Updated to match the actual file name
 };
 
 // External videos fallback - these will be used if the local videos aren't found
 const externalCollegeVideos: Record<string, string> = {
   'UCLA': 'https://drive.google.com/uc?export=download&id=1MUQzDlDhxgqYStKXPcMcCSVVwWd2dGj0',
-  'Columbia': 'https://example.com/columbia-video', // Placeholder for Columbia external video
-  'NYU': 'https://example.com/nyu-video' // Placeholder for NYU external video
+  'Columbia': 'https://example.com/columbia-video',
+  'NYU': 'https://example.com/nyu-video'
 };
 
 // Default college and video
@@ -53,8 +53,6 @@ const Index = () => {
     };
 
     if (videoRef.current) {
-      setIsVideoLoading(true);
-      
       // Add event listener for when video data is loaded
       videoRef.current.addEventListener('loadeddata', handleVideoLoaded);
 
@@ -91,6 +89,8 @@ const Index = () => {
 
   // Handle changing the college selection
   const handleCollegeSelected = (college: string) => {
+    if (college === selectedCollege) return; // Skip if same college selected
+    
     console.log(`College selected: ${college}`);
     setSelectedCollege(college);
     
@@ -101,26 +101,30 @@ const Index = () => {
     if (college && collegeVideos[college]) {
       setIsTransitioning(true);
       setIsVideoLoading(true);
+      setVideoLoaded(false);
       
       console.log(`Setting video source to: ${collegeVideos[college]}`);
       
-      // Short delay to allow for fade-out transition before changing video source
+      // Short delay to allow for fade-out transition
       setTimeout(() => {
         setVideoSrc(collegeVideos[college]);
-        setVideoLoaded(false);
         
         // Force refresh the video element
         if (videoRef.current) {
-          const currentTime = videoRef.current.currentTime;
           videoRef.current.load();
           console.log('Video element reloaded');
           
           // Try to play again after reload
           videoRef.current.play()
-            .then(() => console.log('Video playback restarted after selection'))
-            .catch(err => console.error('Failed to restart video after selection:', err));
+            .then(() => {
+              console.log('Video playback restarted after selection');
+            })
+            .catch(err => {
+              console.error('Failed to restart video after selection:', err);
+              handleVideoError();
+            });
         }
-      }, 500);
+      }, 300);
     }
   };
 
@@ -157,13 +161,15 @@ const Index = () => {
           muted 
           playsInline
           preload="auto"
-          className={`video-container transition-opacity duration-1000 ${videoLoaded && !isTransitioning ? 'opacity-100 video-fade-in' : 'opacity-0'}`}
+          className={`video-container ${videoLoaded && !isTransitioning ? 'opacity-100 video-fade-in' : 'opacity-0'}`}
           poster="/placeholder.svg"
           onCanPlay={() => {
             console.log(`Video can play now: ${videoSrc}`);
             setVideoLoaded(true);
-            setIsTransitioning(false);
-            setIsVideoLoading(false);
+            setTimeout(() => {
+              setIsTransitioning(false);
+              setIsVideoLoading(false);
+            }, 200);
           }}
           onError={(e) => {
             console.error("Video error occurred:", e);
