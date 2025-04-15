@@ -22,26 +22,29 @@ npm run dev
 
 ## 🌱 Spring Development Plan
 
-### Week Overview
-- **Days 1-2:** Landing page with college selection & verification
-- **Days 3-5:** Core UI screens (marketplace, profile, navigation)
-- **Days 6-7:** Visual polish and content implementation
+### Achievable Weekly Goals
 
-### Detailed Timeline
-1. **Landing Page (Days 1-2)**
-   - College selection dropdown with major universities
-   - Education verification entry (placeholder)
-   - Brand messaging for campus-exclusive marketplace
+#### Week 1: Foundation & Landing Page
+- **Day 1:** Set up project structure and implement college dropdown selection
+- **Day 2:** Complete landing page with smooth video transitions between colleges
+- **Day 3:** Add education verification UI components (non-functional placeholders)
 
-2. **Core UI Implementation (Days 3-5)**
-   - Marketplace browse view with campus-specific listings
-   - User profile displaying metrics and item grid
-   - Navigation with Home, Explore, Messages, and Profile
+#### Week 2: Core Features
+- **Day 4:** Build marketplace browse view with sample listings for NYU
+- **Day 5:** Create user profile page showing basic metrics and grid layout
+- **Day 6:** Implement navigation bar with functioning routes between screens
 
-3. **Polish & Content (Days 6-7)**
-   - Sample product listings with realistic pricing
-   - Campus-specific tags and filtering options
-   - Responsive design optimization for presentation
+#### Week 3: Polish & Demo Preparation
+- **Day 7:** Add realistic product listings with images and pricing
+- **Day 8:** Implement campus-specific tags and basic filtering
+- **Day 9:** Ensure responsive design across mobile and desktop views
+- **Day 10:** Final bug fixes and demo preparation
+
+### Success Metrics
+- Landing page functions on both mobile and desktop views
+- Navigation between at least 3 main screens works smoothly
+- Sample marketplace shows minimum 10 listings with campus tags
+- Design matches approved mockups with consistent styling
 
 ## 💻 Tech Stack
 
