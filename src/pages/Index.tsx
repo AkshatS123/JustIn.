@@ -197,8 +197,8 @@ const Index = () => {
         </div>
         
         {/* College Selection Section */}
-        <div className="w-full max-w-md bg-black/40 backdrop-blur-md p-5 sm:p-8 rounded-lg border border-white/10 shadow-xl">
-          <h2 className="text-white text-xl sm:text-2xl font-medium mb-4 sm:mb-6 text-center">Find Your Campus</h2>
+        <div className="w-full max-w-md bg-white/95 backdrop-blur-md p-5 sm:p-8 rounded-lg border border-neutral-200 shadow-md">
+          <h2 className="text-gray-900 text-xl sm:text-2xl font-medium mb-4 sm:mb-6 text-center">Find Your Campus</h2>
           
           {/* College Selection */}
           <CollegeSelect onSelected={handleCollegeSelected} initialCollege={DEFAULT_COLLEGE} />
@@ -206,7 +206,7 @@ const Index = () => {
           {/* Continue Button */}
           <Button 
             onClick={handleContinue}
-            className="w-full max-w-full mt-6 sm:mt-8 py-4 sm:py-6 bg-gradient-button text-white font-semibold text-lg rounded-md hover:opacity-90 transition-all animate-fade-in"
+            className="w-full max-w-full mt-6 sm:mt-8 py-4 sm:py-6 bg-[#40E0D0] text-white font-semibold text-lg rounded-md hover:opacity-90 transition-all animate-fade-in"
             style={{ animationDelay: '600ms' }}
             disabled={!selectedCollege || isVideoLoading}
           >

@@ -2,13 +2,22 @@
 
 Using this to track daily development changes and improvements. 
 
-## 2025-4-15
+## 2025-4-15 - 10am
 
-- Added NYU video support to the landing page
-- Fixed video transitions between different college selections
-- Optimized video loading and transition animations
-- Removed toast notifications for cleaner mobile UI
-- Doubled the size of the Just.png logo throughout the application
-- Repositioned logo to stick to the top left corner
-- Simplified the header component for better mobile display
-- Created DEVLOGS.md to track development changes
+- Added NYU video support
+- Fixed video transitions
+- Optimized animations
+- Removed notifications
+- Doubled logo size
+- Repositioned logo to top left
+- Simplified header component
+- Created DEVLOGS
+
+## 2025-4-15 - 12pm
+
+- Updated UI to white theme
+- Removed "I go to" text
+- Added location pin icon
+- Switched to white container
+- Updated button to teal
+- Added development plan in README

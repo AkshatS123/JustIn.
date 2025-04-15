@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, ChevronDown } from 'lucide-react';
+import { Check, MapPin, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Select,
@@ -31,24 +31,31 @@ const CollegeSelect = ({ onSelected, initialCollege }: CollegeSelectProps) => {
 
   return (
     <div className="w-full animate-fade-in" style={{ animationDelay: '300ms' }}>
-      <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-2">
-        <span className="text-xl font-medium text-white drop-shadow-lg">I go to</span>
+      <div className="flex flex-col items-center">
         <Select 
           onValueChange={handleSelectChange}
           onOpenChange={(open) => setIsOpen(open)}
         >
           <SelectTrigger 
             className={cn(
-              "w-full sm:w-[220px] h-[48px] bg-white/10 backdrop-blur-md border-white/30 text-white",
-              "hover:bg-white/20 transition-all duration-300 shadow-lg",
-              "focus:ring-2 focus:ring-white/50",
-              selectedCollege ? "border-blue-400/70" : ""
+              "w-full sm:w-[220px] h-[48px] bg-white backdrop-blur-md border-neutral-200",
+              "hover:bg-gray-50 transition-all duration-300 shadow-sm",
+              "focus:ring-2 focus:ring-neutral-200",
+              "text-gray-900 font-medium",
+              selectedCollege ? "border-blue-400" : ""
             )}
           >
-            <SelectValue placeholder="Select College" />
+            {selectedCollege ? (
+              <div className="flex items-center">
+                <MapPin className="h-4 w-4 text-purple-600 mr-2" />
+                <span className="text-gray-900">{selectedCollege}</span>
+              </div>
+            ) : (
+              <SelectValue placeholder="Select College" />
+            )}
           </SelectTrigger>
           <SelectContent 
-            className="bg-white/90 backdrop-blur-md border-white/20 shadow-xl animate-in fade-in-80 zoom-in-95"
+            className="bg-white border-neutral-200 shadow-lg animate-in fade-in-80 zoom-in-95"
             position="popper"
             sideOffset={5}
           >
@@ -59,15 +66,15 @@ const CollegeSelect = ({ onSelected, initialCollege }: CollegeSelectProps) => {
                   value={college}
                   className={cn(
                     "cursor-pointer transition-colors duration-150",
-                    "hover:bg-blue-50 focus:bg-blue-50",
-                    "data-[state=checked]:bg-blue-100 data-[state=checked]:text-blue-800",
+                    "hover:bg-neutral-50 focus:bg-neutral-50",
+                    "data-[state=checked]:bg-neutral-100 data-[state=checked]:text-gray-900",
                     "py-2 px-3"
                   )}
                 >
                   <div className="flex items-center justify-between">
                     <span>{college}</span>
                     {selectedCollege === college && (
-                      <Check className="h-4 w-4 text-blue-600" />
+                      <Check className="h-4 w-4 text-purple-600" />
                     )}
                   </div>
                 </SelectItem>
