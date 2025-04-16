@@ -150,7 +150,7 @@ const Index = () => {
       {/* Header with logo */}
       <Header />
       
-      {/* Video Background with fallback to image */}
+      {/* Video Background */}
       <div className="video-background">
         <video 
           ref={videoRef}
@@ -160,7 +160,6 @@ const Index = () => {
           playsInline
           preload="auto"
           className={`video-container ${videoLoaded && !isTransitioning ? 'opacity-100 video-fade-in' : 'opacity-0'}`}
-          poster="/placeholder.svg"
           onCanPlay={() => {
             console.log(`Video can play now: ${videoSrc}`);
             setVideoLoaded(true);
@@ -169,55 +168,58 @@ const Index = () => {
               setIsVideoLoading(false);
             }, 200);
           }}
-          onError={(e) => {
-            console.error("Video error occurred:", e);
-            console.error("Video element error code:", videoRef.current?.error?.code);
-            console.error("Video element error message:", videoRef.current?.error?.message);
-            handleVideoError();
-          }}
+          onError={handleVideoError}
         >
           <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="video-overlay" /> {/* Darker overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40" />
         
-        {/* Video Loading Indicator (minimal and subtle) */}
+        {/* Video Loading Indicator */}
         {isVideoLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <Loader2 className="loading-spinner" />
+            <div className="h-12 w-12 rounded-full border-2 border-white/20 border-t-white/80 animate-spin" />
           </div>
         )}
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex flex-col items-center justify-center space-y-8 px-4 pt-12">
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 w-full max-w-md mx-auto">
         {/* Logo */}
-        <div className="mb-12 md:mb-16 mt-[-20px] md:mt-[-40px]">
-          <Logo />
+        <div className="mb-12">
+          <Logo className="scale-110" />
         </div>
         
-        {/* College Selection Section */}
-        <div className="w-full max-w-md bg-white/80 backdrop-blur-md p-5 sm:p-8 rounded-lg border border-neutral-200/70 shadow-md">
-          <h2 className="text-gray-900 text-xl sm:text-2xl font-medium mb-4 sm:mb-6 text-center">Find Your Campus</h2>
+        {/* College Selection Card */}
+        <div className="w-full glassmorphism animate-fade-in">
+          {/* Card Header */}
+          <div className="px-6 pt-5 pb-4">
+            <h2 className="text-white text-xl font-medium text-center tracking-wide">Find Your Campus</h2>
+          </div>
           
-          {/* College Selection */}
-          <CollegeSelect onSelected={handleCollegeSelected} initialCollege={DEFAULT_COLLEGE} />
-          
-          {/* Continue Button */}
-          <Button 
-            onClick={handleContinue}
-            className="w-full max-w-full mt-6 sm:mt-8 py-4 sm:py-6 bg-[#40E0D0] text-white font-semibold text-lg rounded-md hover:opacity-90 transition-all animate-fade-in"
-            style={{ animationDelay: '600ms' }}
-            disabled={!selectedCollege || isVideoLoading}
-          >
-            {isVideoLoading ? (
-              <span className="flex items-center justify-center">
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-              </span>
-            ) : (
-              'CONTINUE'
-            )}
-          </Button>
+          {/* Card Content */}
+          <div className="px-6 pb-6">
+            {/* College Selection */}
+            <div className="mb-6">
+              <CollegeSelect onSelected={handleCollegeSelected} initialCollege={DEFAULT_COLLEGE} />
+            </div>
+            
+            {/* Continue Button */}
+            <Button 
+              onClick={handleContinue}
+              className="w-full h-12 bg-gradient-to-r from-justin-teal to-justin-mint text-white font-medium text-base rounded-xl hover:opacity-95 transition-all shadow-lg shimmer"
+              disabled={!selectedCollege || isVideoLoading}
+            >
+              {isVideoLoading ? (
+                <span className="flex items-center justify-center">
+                  <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                  Loading
+                </span>
+              ) : (
+                'CONTINUE'
+              )}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -225,3 +227,4 @@ const Index = () => {
 };
 
 export default Index;
+

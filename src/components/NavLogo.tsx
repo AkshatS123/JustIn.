@@ -9,18 +9,22 @@ interface NavLogoProps {
 const NavLogo: React.FC<NavLogoProps> = ({ className = '', size = 'md' }) => {
   // Image sizes optimized for corner placement
   const imageClass = {
-    sm: 'h-24 w-24',
-    md: 'h-32 w-32', 
-    lg: 'h-40 w-40'
+    sm: 'h-10 w-10',
+    md: 'h-12 w-12', 
+    lg: 'h-16 w-16'
+  };
+
+  const textClass = {
+    sm: 'text-lg',
+    md: 'text-xl',
+    lg: 'text-2xl'
   };
 
   return (
-    <Link to="/" className={`block ${className}`}>
-      <img 
-        src="/Just.png" 
-        alt="Just In Logo" 
-        className={`${imageClass[size]} object-contain`}
-      />
+    <Link to="/" className={`flex items-center ${className}`}>
+      <span className={`font-serif ${textClass[size]} text-white font-medium tracking-wide`}>
+        Just In<span className="text-justin-teal">.</span>
+      </span>
     </Link>
   );
 };

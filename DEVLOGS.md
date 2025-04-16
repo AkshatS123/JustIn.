@@ -35,3 +35,12 @@ Using this to track daily development changes and improvements.
 - Added "Just In." logo redirect to landing page
 - Improved header layout in all pages
 - Added page names to headers
+
+## 2025-4-15 - 4pm
+
+- Redesigned landing page with cleaner UI
+- Improved glassmorphism effects for selection card
+- Added subtle animations and transitions
+- Updated color scheme with teal accents
+- Simplified header with text-only logo
+- Enhanced button with shimmer effect

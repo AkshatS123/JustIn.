@@ -30,64 +30,64 @@ const CollegeSelect = ({ onSelected, initialCollege }: CollegeSelectProps) => {
   };
 
   return (
-    <div className="w-full animate-fade-in" style={{ animationDelay: '300ms' }}>
-      <div className="flex flex-col items-center">
-        <Select 
-          onValueChange={handleSelectChange}
-          onOpenChange={(open) => setIsOpen(open)}
+    <div className="w-full animate-fade-in">
+      <Select 
+        onValueChange={handleSelectChange}
+        onOpenChange={(open) => setIsOpen(open)}
+        defaultValue={initialCollege}
+      >
+        <SelectTrigger 
+          className={cn(
+            "w-full h-12 bg-white/20 backdrop-blur-md border-white/30",
+            "hover:bg-white/25 transition-all duration-200",
+            "focus:ring-2 focus:ring-white/30 focus-visible:ring-offset-0",
+            "text-white font-medium shadow-md",
+            "rounded-xl",
+            selectedCollege ? "border-justin-teal/70" : ""
+          )}
         >
-          <SelectTrigger 
-            className={cn(
-              "w-full sm:w-[220px] h-[48px] bg-white backdrop-blur-md border-neutral-200",
-              "hover:bg-gray-50 transition-all duration-300 shadow-sm",
-              "focus:ring-2 focus:ring-neutral-200",
-              "text-gray-900 font-medium",
-              selectedCollege ? "border-blue-400" : ""
-            )}
-          >
-            {selectedCollege ? (
-              <div className="flex items-center">
-                <MapPin className="h-4 w-4 text-purple-600 mr-2" />
-                <span className="text-gray-900">{selectedCollege}</span>
-              </div>
-            ) : (
-              <SelectValue placeholder="Select College" />
-            )}
-          </SelectTrigger>
-          <SelectContent 
-            className="bg-white border-neutral-200 shadow-lg animate-in fade-in-80 zoom-in-95"
-            position="popper"
-            sideOffset={5}
-          >
-            <div className="max-h-[300px] overflow-y-auto py-1">
-              {colleges.map((college) => (
-                <SelectItem 
-                  key={college} 
-                  value={college}
-                  className={cn(
-                    "cursor-pointer transition-colors duration-150",
-                    "hover:bg-neutral-50 focus:bg-neutral-50",
-                    "data-[state=checked]:bg-neutral-100 data-[state=checked]:text-gray-900",
-                    "py-2 px-3"
-                  )}
-                >
-                  <div className="flex items-center justify-between">
-                    <span>{college}</span>
-                    {selectedCollege === college && (
-                      <Check className="h-4 w-4 text-purple-600" />
-                    )}
-                  </div>
-                </SelectItem>
-              ))}
+          {selectedCollege ? (
+            <div className="flex items-center">
+              <MapPin className="h-4 w-4 text-justin-teal mr-2" />
+              <span className="text-white">{selectedCollege}</span>
             </div>
-          </SelectContent>
-        </Select>
-      </div>
+          ) : (
+            <SelectValue placeholder="Select your campus" className="text-white/80" />
+          )}
+        </SelectTrigger>
+        <SelectContent 
+          className="bg-white/90 backdrop-blur-md border-white/30 shadow-lg rounded-xl animate-in fade-in-80 zoom-in-95"
+          position="popper"
+          sideOffset={5}
+        >
+          <div className="max-h-[300px] overflow-y-auto py-1">
+            {colleges.map((college) => (
+              <SelectItem 
+                key={college} 
+                value={college}
+                className={cn(
+                  "cursor-pointer transition-colors duration-150 rounded-lg my-1 mx-1",
+                  "hover:bg-justin-teal/10 focus:bg-justin-teal/10",
+                  "data-[state=checked]:bg-justin-teal/20 data-[state=checked]:text-gray-900",
+                  "py-2 px-3"
+                )}
+              >
+                <div className="flex items-center justify-between">
+                  <span>{college}</span>
+                  {selectedCollege === college && (
+                    <Check className="h-4 w-4 text-justin-teal" />
+                  )}
+                </div>
+              </SelectItem>
+            ))}
+          </div>
+        </SelectContent>
+      </Select>
       
       {/* Small prompt to encourage selection */}
       {!selectedCollege && (
-        <p className="text-white/70 text-sm mt-2 text-center sm:text-left">
-          Select your college to see campus drone footage
+        <p className="text-white/70 text-sm mt-2 text-center">
+          Select your campus to view drone footage
         </p>
       )}
     </div>
