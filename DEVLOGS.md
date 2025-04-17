@@ -44,3 +44,11 @@ Using this to track daily development changes and improvements.
 - Updated color scheme with teal accents
 - Simplified header with text-only logo
 - Enhanced button with shimmer effect
+
+## 2025-4-16 - 1pm
+
+- Added .edu verification sign-in screen
+- Created form with name, email, and password fields
+- Implemented basic form validation
+- Added smooth transitions between pages
+- Updated navigation flow: landing → sign-in → marketplace

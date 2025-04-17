@@ -140,9 +140,9 @@ const Index = () => {
       return;
     }
     
-    // Navigate to the marketplace page
+    // Navigate to the sign-in page with college information
     console.log(`Continuing with selected college: ${selectedCollege}`);
-    navigate('/marketplace');
+    navigate('/signin', { state: { college: selectedCollege } });
   };
 
   return (
