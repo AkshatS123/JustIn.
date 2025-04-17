@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Loader2, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { Loader2, Mail, Lock, User, ArrowRight, AlertCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const SignIn = () => {
-  const { toast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
@@ -18,6 +16,11 @@ const SignIn = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
+  // Error states
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   
   // Animation control
   const [showForm, setShowForm] = useState(false);
@@ -37,43 +40,36 @@ const SignIn = () => {
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Reset all error states
+    setNameError('');
+    setEmailError('');
+    setPasswordError('');
+    
     // Validate form
+    let hasError = false;
+    
     if (!name.trim()) {
-      toast({
-        title: "Name required",
-        description: "Please enter your name",
-        variant: "destructive",
-      });
-      return;
+      setNameError('Please enter your name');
+      hasError = true;
     }
     
-    if (!email.trim() || !email.includes('@')) {
-      toast({
-        title: "Valid email required",
-        description: "Please enter a valid .edu email address",
-        variant: "destructive",
-      });
-      return;
-    }
-    
-    // Verify .edu domain
-    if (!email.endsWith('.edu')) {
-      toast({
-        title: "Educational email required",
-        description: "Please use your school email ending with .edu",
-        variant: "destructive",
-      });
-      return;
+    if (!email.trim()) {
+      setEmailError('Please enter your email');
+      hasError = true;
+    } else if (!email.includes('@')) {
+      setEmailError('Please enter a valid email address');
+      hasError = true;
+    } else if (!email.endsWith('.edu')) {
+      setEmailError('Please use your school email ending with .edu');
+      hasError = true;
     }
     
     if (password.length < 6) {
-      toast({
-        title: "Password too short",
-        description: "Password must be at least 6 characters",
-        variant: "destructive",
-      });
-      return;
+      setPasswordError('Password must be at least 6 characters');
+      hasError = true;
     }
+    
+    if (hasError) return;
     
     // Show loading
     setIsLoading(true);
@@ -82,15 +78,8 @@ const SignIn = () => {
     setTimeout(() => {
       setIsLoading(false);
       
-      // Navigate to marketplace
+      // Navigate to marketplace without showing a success toast
       navigate('/marketplace');
-      
-      // Success toast
-      toast({
-        title: "Signed in successfully",
-        description: "Welcome to Just In!",
-        variant: "default",
-      });
     }, 1500);
   };
 
@@ -129,10 +118,16 @@ const SignIn = () => {
                   type="text"
                   placeholder="Your name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12 rounded-xl focus-visible:ring-justin-teal/50"
+                  onChange={(e) => { setName(e.target.value); if (nameError) setNameError(''); }}
+                  className={`pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12 rounded-xl focus-visible:ring-justin-teal/50 ${nameError ? 'border-red-400' : ''}`}
                 />
               </div>
+              {nameError && (
+                <div className="flex items-center mt-1 text-red-400 text-xs font-medium">
+                  <AlertCircle className="h-3 w-3 mr-1" />
+                  {nameError}
+                </div>
+              )}
             </div>
             
             {/* Email Field */}
@@ -147,10 +142,16 @@ const SignIn = () => {
                   type="email"
                   placeholder="you@school.edu"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12 rounded-xl focus-visible:ring-justin-teal/50"
+                  onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError(''); }}
+                  className={`pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12 rounded-xl focus-visible:ring-justin-teal/50 ${emailError ? 'border-red-400' : ''}`}
                 />
               </div>
+              {emailError && (
+                <div className="flex items-center mt-1 text-red-400 text-xs font-medium">
+                  <AlertCircle className="h-3 w-3 mr-1" />
+                  {emailError}
+                </div>
+              )}
             </div>
             
             {/* Password Field */}
@@ -165,10 +166,16 @@ const SignIn = () => {
                   type="password"
                   placeholder="••••••••"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12 rounded-xl focus-visible:ring-justin-teal/50"
+                  onChange={(e) => { setPassword(e.target.value); if (passwordError) setPasswordError(''); }}
+                  className={`pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/40 h-12 rounded-xl focus-visible:ring-justin-teal/50 ${passwordError ? 'border-red-400' : ''}`}
                 />
               </div>
+              {passwordError && (
+                <div className="flex items-center mt-1 text-red-400 text-xs font-medium">
+                  <AlertCircle className="h-3 w-3 mr-1" />
+                  {passwordError}
+                </div>
+              )}
             </div>
             
             {/* Submit Button */}

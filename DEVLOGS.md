@@ -52,3 +52,11 @@ Using this to track daily development changes and improvements.
 - Implemented basic form validation
 - Added smooth transitions between pages
 - Updated navigation flow: landing → sign-in → marketplace
+
+## 2025-4-16 - 2pm
+
+- Improved form validation UX in sign-in
+- Replaced toast notifications with inline error messages
+- Added red highlight to invalid input fields
+- Removed success message when signing in
+- Streamlined transition to marketplace
