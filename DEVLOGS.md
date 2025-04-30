@@ -60,3 +60,14 @@ Using this to track daily development changes and improvements.
 - Added red highlight to invalid input fields
 - Removed success message when signing in
 - Streamlined transition to marketplace
+
+## 2025-4-30 - 10am
+
+- Completely redesigned sign-up page, with Gabi's design's
+- Created clean, modern UI with white background
+- Added username password fields with rounded inputs
+- Implemented social sign-up options (Google, Facebook, Apple)
+- Created consistent user flow between all screens
+- COMMENTED OUT ORIGINAL DRONE VIDEO PAGE
+- Streamlined navigation between pages
+- Kept college selection code for potential future reintegration

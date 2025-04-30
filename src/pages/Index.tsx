@@ -207,7 +207,7 @@ const Index = () => {
             {/* Continue Button */}
             <Button 
               onClick={handleContinue}
-              className="w-full h-12 bg-gradient-to-r from-justin-teal to-justin-mint text-white font-medium text-base rounded-xl hover:opacity-95 transition-all shadow-lg shimmer"
+              className="w-full h-12 bg-[#40E0D0] text-white font-medium text-base rounded-xl hover:opacity-95 transition-all shadow-md"
               disabled={!selectedCollege || isVideoLoading}
             >
               {isVideoLoading ? (

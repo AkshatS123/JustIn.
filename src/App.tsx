@@ -4,7 +4,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Index from "./pages/Index";
+// Import commented out but kept for future reference
+// import Index from "./pages/Index";
 import SignIn from "./pages/SignIn";
 import Marketplace from "./pages/Marketplace";
 import Explore from "./pages/Explore";
@@ -23,7 +24,11 @@ const App = () => {
           <Sonner />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Index />} />
+              {/* Original landing page route commented out but kept for future use */}
+              {/* <Route path="/" element={<Index />} /> */}
+              
+              {/* Now using SignIn as default landing page */}
+              <Route path="/" element={<SignIn />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/marketplace" element={<Marketplace />} />
               <Route path="/explore" element={<Explore />} />
