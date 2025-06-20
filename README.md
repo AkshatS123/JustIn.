@@ -32,5 +32,3 @@ npm run dev
 ## 🤔 Need Help?
 
 Reach out if confused about anything!
-
-
