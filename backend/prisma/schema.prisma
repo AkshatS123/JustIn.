@@ -14,7 +14,7 @@ model User {
   id        String   @id @default(cuid())
   username  String   @unique
   email     String   @unique
-  password  String
+  password  String?  // Made optional since Supabase handles auth
   avatar    String?
   bio       String?
   location  String?
