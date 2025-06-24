@@ -1,8 +1,8 @@
 # User Profile Creation Setup Guide
 
-This guide will help you set up automatic user profile creation when users sign up through Supabase.
+This guide is meant to help set up automatic user profile creation when users sign up through Supabase.
 
-## What We've Built
+## What I've Built
 
 ✅ **Backend API Endpoints:**
 - `POST /api/users` - Create user profile (for webhook)
